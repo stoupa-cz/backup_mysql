@@ -1,0 +1,25 @@
+# ###
+# Basic setup (on CentOS 6.5)
+# ###
+
+# Mysql backup user
+# You may consider to have special backup user with limited privileges ie:
+# CREATE USER 'backup'@'localhost' IDENTIFIED BY  'xxx';
+# GRANT SELECT, RELOAD, FILE, SUPER, LOCK TABLES, SHOW VIEW ON *.* TO  'backup'@'localhost' IDENTIFIED BY  'xxx' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
+
+# Download or pull from somewhere
+cd <downloaded_dir>
+cp config.sh.sample config.sh 
+# Adjust config.sh to your needs
+. ./config.sh
+mkdir -p $BACKUP_DIR
+chmod 0700 $BACKUP_DIR
+mkdir -p $BACKUP_DIR_MONTHLY
+chmod 0700 $BACKUP_DIR_MONTHLY
+mkdir `dirname $DEBUG_LOG`
+
+# ###
+# Cron
+# ###
+echo "23 3 * * * root /home2/scripts/backup_mysql/backup_mysql.sh" > /etc/cron.d/backup_mysql
+service crond restart

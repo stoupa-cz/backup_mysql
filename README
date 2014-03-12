@@ -1,0 +1,23 @@
+Very simple mysql database backup based on mysqldump
+----------------------------------------------------
+
+Features:
+- Very simple
+- Different retention on a daily and monthly backups (ie. you may have daily
+  backup for last x days and monthly backups for last y months)
+- Simple backup check (rely only on a backup filesize)
+- Free license
+
+Antifeatures:
+- Not tested well
+- "Crazy stuff" like spaces in a filenames is probably not handled
+- No deduplication, no compression (yet)
+- It is done just for me. It is hosted only for backup purposes.
+
+Caveats:
+- The latest backup may be "hidden" in a monthly folder (if there is no
+  monthly backup for particular month, the daily backup is *moved* to the
+  monthly folder.
+
+Installation:
+- See INSTALLATION

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+export KEEP_DAY_BACKUPS=8
+export KEEP_MONTH_BACKUPS=10
+# Change to /dev/null for no log
+export DEBUG_LOG="/var/backup/mysql/logs/mysql_debug.log"
+export BACKUP_DIR="/var/backup/mysql/"
+export BACKUP_DIR_MONTHLY="${BACKUP_DIR}/monthly/"
+# Format must be recognized by find
+export BACKUP_SIZE_MIN="4M"
+export DB_USER="backup"
+export DB_PASSWORD="xxx"
